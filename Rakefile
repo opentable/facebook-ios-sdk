@@ -27,19 +27,8 @@ task :clean do
 	FileUtils.rm_rf "./pkg"
 
 	# and cocoa pods artifacts
-	FileUtils.rm_rf builder.configuration.project_file_path
 	FileUtils.rm_rf "Podfile.lock"
 end
-
-# pod requires a full clean and runs pod install
-# task :pod => :clean do
-# 	system "pod install"
-# end
-
-# desc "Cleans, runs pod and opens the workspace"
-# task :open => :pod do
-# 	system "open #{builder.configuration.project_file_path}"
-# end
 
 desc "Phony pod task because TC is driving me crazy today"
 task :pod do
