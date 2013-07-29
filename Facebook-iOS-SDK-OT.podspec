@@ -1,4 +1,4 @@
-version = '3.5.5'
+version = '3.5.6'
 version_tag = "v#{version}"
 
 Pod::Spec.new do |s|
