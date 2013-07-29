@@ -119,7 +119,15 @@ FBInsightsEventParameterDialogOutcome : (cancelled
                       valueToSum:1.0
                       parameters:@{ @"render_type" : @"Native" }
                          session:session];
-    [viewController presentModalViewController:composeViewController animated:YES];
+	if([viewController respondsToSelector: @selector(presentViewController:animated:completion:)]) {
+		[viewController presentViewController: composeViewController animated: YES completion: nil];
+	}
+	else {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+		[viewController presentModalViewController:composeViewController animated:YES];
+#pragma clang diagnostic pop
+	}
     
     return YES;
 }
