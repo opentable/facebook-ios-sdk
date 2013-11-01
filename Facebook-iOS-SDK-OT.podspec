@@ -11,10 +11,10 @@ Pod::Spec.new do |s|
   s.homepage     =  'http://developers.facebook.com/docs/reference/iossdk'
   s.author       =  'Facebook'
   s.source       =  { :git => 'https://github.com/opentable/facebook-ios-sdk.git', :tag => "#{version_tag}" }
-  s.source_files =  'src/*.{h,m}', 'src/Base64/*.{h,m}', 'src/Cryptography/*.{h,m}'
+   s.source_files =  'src/*.{h,m}', 'src/Base64/*.{h,m}', 'src/Cryptography/*.{h,m}'
   s.resources    =  'src/FacebookSDKResources.bundle', 'src/FBUserSettingsViewResources.bundle'
-  s.library      =  'sqlite3.0'
   s.header_dir   =  'FacebookSDK'
   s.weak_frameworks = 'Accounts', 'AdSupport', 'Social', 'Security'
   s.framework = 'CoreLocation'
+  s.prepare_command = "find src -name \\*.png | grep -v @ | grep -v -- - | sed -e 's|\\(.*\\)/\\([a-zA-Z0-9]*\\).png|python scripts/image_to_code.py -i \\1/\\2.png -c \\2 -o src|' | sh"
 end
